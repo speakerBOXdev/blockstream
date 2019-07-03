@@ -1,0 +1,36 @@
+body {
+    font-size: 1em;
+    color: 'rgba(0,0,0,1)'
+}
+canvas {
+    /*border-width: 2px;
+    border-style: solid;
+    border-color: 'rgba(0,0,0,1)';*/
+    border: none;
+    background-color: 'rgba(253,253,255,.7)'
+}
+
+.gameWrapper {
+    margin-top: 10px;
+    text-align: center;
+}
+
+/*** HUD ***/
+.hud {
+    background-color: grey;
+    border-radius: 5px;
+    color: blue;
+    font-size: 2em;
+    padding: 5px 15px;
+    box-shadow: grey 0px 10px 5px;
+}
+.hud span, .hud div{
+    display: inline-block;
+    margin: 0 15px;
+}
+.hud .label {
+    text-transform: uppercase;
+}
+.hud .label:after {
+    content: ':';
+}

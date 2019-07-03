@@ -1,0 +1,15 @@
+version: '3.2'
+
+services:
+  spy:
+    image: 'jrose/blockstream:dev'
+    container_name: spy
+    environment:
+      - FLASK_APP=blockstream
+      - FLASK_ENV=development
+    volumes:
+      - type: bind
+        source: ./_app/usr/src/app/blockstream/
+        target: /usr/src/app/blockstream/
+    ports:
+      - '80:5000'

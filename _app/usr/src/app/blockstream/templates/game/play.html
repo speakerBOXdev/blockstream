@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h1>{% block title %}GAME{% endblock %}</h1>
+{% endblock %}GAME
+{% block content %}
+    
+    <div id="gamewrapper"></div>
+
+{% endblock %}
+
+{% block scripts_body %}
+  <script type="text/javascript" src="{{ url_for('static', filename='component.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='game.js') }}"></script>
+{% endblock %}
