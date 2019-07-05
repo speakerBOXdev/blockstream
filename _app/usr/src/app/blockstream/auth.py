@@ -12,7 +12,7 @@ from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
 
 from blockstream.db import get_db
-
+from blockstream.dataaccess import userdataaccess
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 
@@ -39,7 +39,7 @@ def load_logged_in_user():
         g.user = None
     else:
         g.user = (
-            get_db().execute("SELECT * FROM user WHERE id = ?", (user_id,)).fetchone()
+            userdataaccess.get_by_id(user_id)
         )
 
 
@@ -61,7 +61,7 @@ def register():
         elif not password:
             error = "Password is required."
         elif (
-            db.execute("SELECT id FROM user WHERE username = ?", (username,)).fetchone()
+            userdataaccess.get_by_username(username)
             is not None
         ):
             error = "User {0} is already registered.".format(username)
@@ -69,11 +69,7 @@ def register():
         if error is None:
             # the name is available, store it in the database and go to
             # the login page
-            db.execute(
-                "INSERT INTO user (username, password) VALUES (?, ?)",
-                (username, generate_password_hash(password)),
-            )
-            db.commit()
+            userdataaccess.add_user(username, generate_password_hash(password))
             return redirect(url_for("auth.login"))
 
         flash(error)
@@ -87,11 +83,8 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        db = get_db()
         error = None
-        user = db.execute(
-            "SELECT * FROM user WHERE username = ?", (username,)
-        ).fetchone()
+        user = userdataaccess.get_by_username(username)
 
         if user is None:
             error = "Incorrect username."

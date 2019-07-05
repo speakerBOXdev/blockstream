@@ -88,7 +88,6 @@ function component(context, x,y,width,height) {
             for (var i = 0; i < skin.length; i++) {
                  this.ctx.fillRect(this.x + (skin[i].x * pixel), this.y + (skin[i].y * pixel), pixel, pixel);      
             }
-            //console.info(skin);
         }
     }
 
@@ -104,5 +103,5 @@ var skins = {
     "none" : [],
     "smiley" : [ { x : 1, y : 1 }, { x : 2, y : 1 }, { x : 4, y : 1 }, { x : 5, y : 1 }, { x : 3, y : 2 }, { x : 3, y : 3 }, { x : 1, y : 4 }, { x : 5, y : 4 }, { x : 4, y : 5 }, { x : 2, y : 5 }, { x : 3, y : 5 } ],
     "checker" : [ { x : 0, y : 0 }, { x : 0, y : 2 }, { x : 0, y : 2 }, { x : 0, y : 4 }, { x : 0, y : 6 }, { x : 1, y : 1 }, { x : 1, y : 3 }, { x : 1, y : 5 }, { x : 2, y : 0 }, { x : 2, y : 2 }, { x : 2, y : 2 }, { x : 2, y : 4 }, { x : 2, y : 6 },{ x : 3, y : 1 }, { x : 3, y : 3 }, { x : 1, y : 5 }, { x : 4, y : 0 }, { x : 4, y : 2 }, { x : 4, y : 2 }, { x : 4, y : 4 }, { x : 4, y : 6 },{ x : 5, y : 1 }, { x : 5, y : 3 }, { x : 5, y : 5 }, { x : 6, y : 0 }, { x : 6, y : 2 }, { x : 6, y : 2 }, { x : 6, y : 4 }, { x : 6, y : 6 } ],
-    
+    "tongue" : [ { x:0, y:0}]    
 };

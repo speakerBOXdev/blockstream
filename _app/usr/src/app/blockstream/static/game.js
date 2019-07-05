@@ -267,6 +267,7 @@ function game(canvas, xLowerBound, yLowerBound, xUpperBound, yUpperBound) {
                 this.pause("Score was " + this.score);
                 this.drawCanvas();
                 this.player = null;
+                this.sendScore();
                 break;
             }
             if (this.items[o].x > 0) {
@@ -276,6 +277,15 @@ function game(canvas, xLowerBound, yLowerBound, xUpperBound, yUpperBound) {
             }
         }
         this.items = newItems;
+    }
+
+    this.sendScore = function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/game/scores", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            val: this.score
+        }));
     }
 
     this.update = function(keyCode, direction) {
@@ -304,7 +314,7 @@ function game(canvas, xLowerBound, yLowerBound, xUpperBound, yUpperBound) {
                 { 
                     x : getRandom(this.xLowerBound, this.xUpperBound), 
                     y : getRandom(this.yLowerBound, this.yUpperBound),
-                    r : getRandom(1,5)
+                    r : getRandom(1,5),
                 }
             );
         }

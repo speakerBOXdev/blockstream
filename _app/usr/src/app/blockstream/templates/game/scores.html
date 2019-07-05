@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+  <h1>{% block title %}High Scores{% endblock %}</h1>
+{% endblock %}GAME
+{% block content %}
+
+    <table width="100%">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in scores %}
+                <tr>
+                    <td>{{ record['username'] }}</td>
+                    <td>{{ record['val'] }}</td>
+                    <td>{{ record['created'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
